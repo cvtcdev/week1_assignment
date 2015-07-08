@@ -19,7 +19,6 @@ def get_number_to_guess
 
   random_num = Random.new
   random_num.rand(1..max_possible_num)
-
 end
 
 def show_results(guesses, number_to_guess)
@@ -39,7 +38,6 @@ def show_results(guesses, number_to_guess)
 end
 
 def main
-
   play_again = 'y'
   while play_again == 'y'
     guesses = 1
