@@ -7,7 +7,11 @@ def get_number_to_guess
     puts 'Please select a level of difficulty (1, 2, or 3):'
     difficulty_level = gets.chop.to_i
   end
-
+  
+  # A hash could make this easier:
+  # levels = {1 => 10, 2 => 100, 3 => 1000}
+  # levels[difficulty_level]
+  
   case difficulty_level
     when 1 then
       max_possible_num = 10
@@ -17,8 +21,13 @@ def get_number_to_guess
       max_possible_num = 1000
   end
 
+  # good. An array can be shuffled too. 
+  # Convert range to array, shuffle, grab first item.
+  # (1..max_possible_num).to_a.shuffle.first
+
   random_num = Random.new
   random_num.rand(1..max_possible_num)
+  
 end
 
 def show_results(guesses, number_to_guess)
@@ -31,9 +40,15 @@ def show_results(guesses, number_to_guess)
                   else
                     'Getter luck next time.'
                   end
-
+  # I don't think i'm comfortable with this function printing out
+  # values. I think it should return a string.
   puts "That's right! The number is #{number_to_guess}"
   puts "You got it in #{guesses} guesses! " + result_phrase
+  
+  # I think this question should be part of the main program.
+  # Remember that since you have a puts as the last executed
+  # statement, this function does return nil, as `puts` returns
+  # nil. I'd move this question into main.
   puts 'Play again? (y/n)'
 end
 
